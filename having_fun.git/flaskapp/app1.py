@@ -7,8 +7,6 @@ import json,re
 from requests import put,get,post
 #from urlparse import urlparse
 
-import webbrowser,pyautogui
-
 #generating_random_numbers
 #from Crypto.PublicKey import RSA
 from Crypto import Random
@@ -51,7 +49,6 @@ def userHome():
 @app.route('/logout')
 def logout():
     session.pop('user',None)
-    #session['logged_in'] = False
     return redirect('/')
 
 @app.route('/validateLogin',methods=['POST'])
@@ -62,12 +59,11 @@ def validateLogin():
        
         a1=post('http://localhost:5009/api/resource',auth=(_useremail,_password)).json()
         print(a1)
-        
+        # connect to mysql
         p = re.compile('Hello,*')
         print('testing')
         if p.match(a1['data'].encode('utf-8')):
           print('Welcome user')
-          #session['logged_in'] = True
           session['user'] = _useremail
           return redirect('/userHome')
         else:
@@ -80,11 +76,11 @@ def validateLogin():
 @app.route('/signUp',methods=['POST'])
 def signUp():
     try:
-        
+       
         _name = request.form['inputName']
         _email = request.form['inputEmail']
         _password = request.form['inputPassword']
-          
+        
         
        
         if _name and _email and _password:
@@ -95,9 +91,6 @@ def signUp():
          if res['message'].encode('utf-8') == _name:
                 aaaa = json.dumps({'message':'User created successfully !'})
                 print(aaaa)
-                pyautogui.hotkey('ctrlleft','w')
-                webbrowser.open('http://localhost:5002/')
-                
                 return redirect('/')
          elif res['message'].encode('utf-8') == 'user already exists':
                 bbb = json.dumps({'error':res['message']})
@@ -112,7 +105,6 @@ def signUp():
            #return json.dumps({'html':'<span>Enter the required fields</span>'})
     
     except Exception as e:
-        print('hi')
         print(e)
         return render_template('error.html', error = e)
         #return json.dumps({'error':str(e)})
