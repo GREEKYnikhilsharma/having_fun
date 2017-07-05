@@ -1,0 +1,1 @@
+data -c from PIL import Image;import io;i=raw_input();i.show()

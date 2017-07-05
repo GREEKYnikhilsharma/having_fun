@@ -1,0 +1,9 @@
+import pyautogui,time
+pyautogui.press('winleft')
+time.sleep(1)
+pyautogui.hotkey('terminal')
+time.sleep(1)
+pyautogui.press('enter')
+x,y=530,151
+#pyautogui.moveTo(x,y)
+#pyautogui.rightClick()

@@ -1,0 +1,24 @@
+set -x
+trap read debug
+
+python shift.py
+for j in 1 2 
+do
+for i in 1 2 3
+do
+ if [ $j = 1 ]
+ then
+ var=$(($1))
+ elif [ $j = 2 ]
+ then
+ if [ $j = 2 ] && [ $i = 1 ]
+ then
+ python pause.py 1
+ fi
+ var=$((-$1))
+ fi
+ #echo $var
+ python scrolling.py $var
+done
+done
+python shift.py

@@ -1,0 +1,18 @@
+n=$1
+for i in 0 1 
+do
+m=$n
+#for j in 0 1 2 3 4
+while [ $m -ge 0  ]
+do 
+if [ $i = '0' ] 
+then
+python pybwsrscript.py
+elif [ $i = '1' ] 
+then
+python pybrwsrscript2.py
+fi
+m=$(( $m - 1 ))
+done 
+done
+python /root/having_fun/autogui/shift.py

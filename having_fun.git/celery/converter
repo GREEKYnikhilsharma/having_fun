@@ -1,0 +1,3 @@
+from PIL import Image,ImageChops
+i=Image.open('/root/having_fun/scipy/op.jpg')
+print(i)

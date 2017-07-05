@@ -1,0 +1,10 @@
+VIRTUAL_ENV=$HOME/.virtualenv
+virtualenv $VIRTUAL_ENV
+source $VIRTUAL_ENV/bin/activate
+cd $(python -c "import os, socketIO_client;print(os.path.dirname(socketIO_client.__file__))")
+DEBUG=* node tests/server.js
+DEBUG=* node tests/proxy.js
+nosetests
+python -c "import logging;logging.getLogger('socketIO-client').setLevel(logging.DEBUG);
+logging.basicConfig();"
+
