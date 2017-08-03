@@ -1,0 +1,43 @@
+3 weeks ago i bought raspberry pi 3 without any additional hardware,
+and without any idea of how i will make it work. 
+First buy SD card / use SD card with memory greater than 8 GB and that too ultra 
+for good performance.
+Download OS image compatible with raspberry pi - i chose raspbian jessie, after 
+downloading zip file extract iso image to your any folder 
+Download Win32DiskImager and select iso file and then click write
+Now image is successfully written in SD card and our raspberry pi 3 is ready booted.
+But if we want to access it headlessly (without any visual) we can do so via SSH,
+and setting VNCserver(VNC server is preinstalled in Raspbian Jessie).
+Latest Version Raspbian Jessie has SSH diabled by default
+So we can enable it by creating a file named SSH with no txt extension
+(i.e. remove txt from the file name / extension) 
+now we can ssh 
+A) connect raspberry pi 3 to computer with ethernet cable 
+B) open cmd -> ping raspberrypi.local
+and you will get ip address
+C) Download Putty (or any other SSH client) and enter the ip address and connect it
+D) though warning may appear as technically security is being breached, but its no
+issue , just Procced forward
+E) enter login id as pi (raspbian default userid) and raspberry (raspbian default 
+password - BE SURE TO CHANGE IT )
+F)They you will be successfully logged in , now you can configure raspberry pi via
+ $sudo raspi-config (MOST RECOMMENDED -> change password)
+G)Now got to interfacing in rapberry pi configuration and select the VNC and 
+enabled it.
+H)Now Download VNC viewer (a VNCclient) on your any other device from where you will be remote 
+controlling raspberry pi 3/2.
+I)Now connect your raspberry pi 3 to wifi via editing /etc/network/interfaces file 
+just insert this code
+auto wlan0
+iface wlan0 inet dhcp
+  wpa-ssid "Wifi name"
+  wpa-pwd "Wifi Password"
+ J) Connect your laptop/andoid phone where VNCclient/ VNC viewer is installed to same wifi
+ H) ifconfig raspberry 3 to know ip address of wireless lan port to which raspi3 is
+ connected to wifi
+ I) now open VNC viewer and click on + and enter the ip address of rspi3
+ And hence the raspberry pi 3 screen will be projected to VNC viewer and from there
+ you can remotely control your device
+ 
+ Alternative Dataplicity for command line remote control - for that visit
+ http://www.dataplicity.com
