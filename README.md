@@ -1,3 +1,8 @@
-# having_fun
+# having_fun 
+
+
+#Random MIX
+
+
 just exploring
-Random mix
+
